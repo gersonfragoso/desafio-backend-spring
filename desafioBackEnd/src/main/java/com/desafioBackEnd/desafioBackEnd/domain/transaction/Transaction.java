@@ -3,10 +3,7 @@ package com.desafioBackEnd.desafioBackEnd.domain.transaction;
 
 import com.desafioBackEnd.desafioBackEnd.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,11 +14,12 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
+@NoArgsConstructor
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal value;
+    private BigDecimal amount;
     @ManyToOne// A transação pode ser vinculada apenas a sender
     @JoinColumn(name = "sender_id")
     private User sender;
